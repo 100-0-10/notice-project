@@ -1,0 +1,28 @@
+services:
+
+  postgresql:
+    container_name: postgres
+    image: 'postgres:latest'
+    environment:
+      POSTGRES_DB: notice
+      POSTGRES_USER: notice
+      POSTGRES_PASSWORD: notice
+    ports:
+      - 5432:5432
+
+  cache:
+    container_name: redis
+    image: redis:alpine
+    ports:
+      - 6379:6379
+
+#  application:
+#    container_name: notice
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - 9090:9090
+#    depends_on:
+#      - postgresql
+#      - cache

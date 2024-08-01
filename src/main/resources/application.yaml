@@ -1,0 +1,22 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+  docker:
+    compose:
+      enabled: true
+      lifecycle-management: start_and_stop
+      stop:
+        command: stop
+        timeout: 1m
+
