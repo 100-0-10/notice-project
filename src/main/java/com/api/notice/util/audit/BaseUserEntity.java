@@ -1,9 +1,7 @@
 package com.api.notice.util.audit;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -22,4 +20,14 @@ public abstract class BaseUserEntity extends BaseTimeEntity {
     @Column(name = "update_user")
     private String updateUser;
 
+    @PrePersist
+    public void onPrePersist() {
+        createUser = "관리자등록";
+        updateUser = "관리자등록";
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        updateUser = "관리자변경";
+    }
 }

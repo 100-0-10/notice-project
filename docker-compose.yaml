@@ -10,11 +10,11 @@ services:
     ports:
       - 5432:5432
 
-  cache:
-    container_name: redis
-    image: redis:alpine
-    ports:
-      - 6379:6379
+#  cache:
+#    container_name: redis
+#    image: redis:alpine
+#    ports:
+#      - 6379:6379
 
 #  application:
 #    container_name: notice

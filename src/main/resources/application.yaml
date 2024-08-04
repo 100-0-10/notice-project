@@ -8,14 +8,22 @@ server:
       force: true
 
 spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:5432/notice
+    username: notice
+    password: notice
+    hikari:
+      maximum-pool-size: 50
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   docker:
     compose:
       enabled: true
-      lifecycle-management: start_and_stop
+      lifecycle-management: start_only
       stop:
         command: stop
         timeout: 1m

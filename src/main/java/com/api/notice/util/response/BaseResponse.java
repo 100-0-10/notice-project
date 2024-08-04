@@ -22,6 +22,15 @@ public record BaseResponse(String code, String message, Object data) {
     }
 
     /**
+     * message, data 값을 설정한다.
+     * message.properties 키와 값 args(nullable) 에 대한 메시지를 가져와 설정한다.
+     * 키에 대한 값이 없으면 messageOrKey 로 설정한다.
+     */
+    public static BaseResponse ofDataAndMessage(Object data, String messageOrKey, @Nullable Object... args) {
+        return new BaseResponse(null, BaseMessageSource.getMessageWithArgs(messageOrKey, args), data);
+    }
+
+    /**
      * code 값과 message 값을 설정한다.
      * message.properties 키와 값 args(nullable) 에 대한 메시지를 가져와 설정한다.
      * 키에 대한 값이 없으면 messageOrKey 로 설정한다.
